@@ -35,8 +35,8 @@ records imported.
 ## Repository Breakdown
 
 - DevProxTest1 is a directory containing 2 files.
--- index.php the file that solves Test 1.
--- devproxtest1.sql the database file.
+- - index.php the file that solves Test 1.
+- - devproxtest1.sql the database file.
 - DevProxTest2 is a directory containing 3 files and 2 directories
 - - output is a directory where files output by the test 2 web application
 - - uploads is a directory where files are saved to when uploaded to the web application by the user
