@@ -34,3 +34,25 @@ records imported.
 
 ## Repository Breakdown
 
+- DevProxTest1 is a directory containing 2 files.
+-- index.php the file that solves Test 1.
+-- 127_0_0_1.sql the database file.
+- DevProxTest2 is a directory containing 3 files and 2 directories
+- - output is a directory where files output by the test 2 web application
+- - uploads is a directory where files are saved to when uploaded to the web application by the user
+- - devProxTest2.php is the page that is called to generate a new file
+- - index.php is the main page of the test 2 application contianing forms for both funcitons required and calls other pages when needed
+- - upload.php is the page that handles file uploads to make sure that the file uploaded by the user is valid.
+
+# installation instructions
+
+1. Download and install XAMPP at *https://www.apachefriends.org/download.html*
+2. Download and unzip the *devProxProficiencyTest* repository and repository folder inside the *xampp/htdox* directory at the location you installed xampp.
+3. Open the xampp control pannel.
+4. Click on the config button for Apache and open the PHP (php.ini) file.
+5. Search for *max_execution_time* and change its value to 0.
+6. Search for *mysqlnd.net_read_buffer_size* and change its value to 526288000
+7. Save the file and exit.
+8. Go back to the Xampp control pannel and start the Apache and MySQL Modules.
+9. Open test 1 at *http://localhost/DevProxProficiencyTest/DevProxTest1/index.php*
+10. Open Test 2 at *http://localhost/DevProxProficiencyTest/DevProxTest2/index.php*
