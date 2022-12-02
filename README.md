@@ -44,7 +44,7 @@ records imported.
 - - index.php is the main page of the test 2 application contianing forms for both funcitons required and calls other pages when needed
 - - upload.php is the page that handles file uploads to make sure that the file uploaded by the user is valid.
 
-# installation instructions
+# Installation instructions
 
 1. Download and install XAMPP at *https://www.apachefriends.org/download.html*
 2. Download and unzip the *devProxProficiencyTest* repository and repository folder inside the *xampp/htdox* directory at the location you installed xampp.
