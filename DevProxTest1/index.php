@@ -37,6 +37,7 @@
     // define variables and set to empty values
     $nameErr = $surnameErr = $idNumberErr = $dateOfBirthErr = $databaseErr = "";
     $name = $surname = $idNumber = $dateOfBirth = "";
+    $isError=FALSE;
     //cancel button resets form to blank
     if (array_key_exists("cancel", $_POST)) {
         $nameErr = $surnameErr = $idNumberErr = $dateOfBirthErr = $databaseErr = "";
@@ -48,8 +49,8 @@
     function post()
     {
         global $nameErr, $surnameErr, $idNumberErr, $dateOfBirthErr,
-        $name, $surname, $idNumber, $dateOfBirth, $databaseErr;
-        $isError = false;
+        $name, $surname, $idNumber, $dateOfBirth, $databaseErr, $isError;
+        
         $name = $_POST["name"];
         list($isError, $nameErr) = textValidate($name);
         $surname = $_POST["surname"];
@@ -58,41 +59,45 @@
         list($isError, $idNumberErr) = idNumberValidate($idNumber);
         $dateOfBirth = $_POST["dateOfBirth"];
         list($isError, $dateOfBirthErr) = dateOfBirthErrValidate($dateOfBirth, $idNumber);
-        if (!$isError)
-            $databaseErr = insertData();
+        if(!$isError)insertData();
+         
+        
     }
     function textValidate($name)
     {
+        global $isError;
         if (strlen($name) > 50)
-            return array(false, "Please use less than 50 characters.");
-        return array(false, "");
+            return array(TRUE, "Please use less than 50 characters.");
+        return array(FALSE||$isError, "");
     }
     function idNumberValidate($idNumber)
     {
+        global $isError;
         //ID No. must be 13 digits long
         if (strlen($idNumber) !== 13)
-            return true;
+            return array(TRUE, "ID No. requires 13 digits");
         //ID No. citizenship digit must be 0 or 1
         if (str_split($idNumber)[10] !== "0" && str_split($idNumber)[10] !== "1")
-            return array(true, "ID No. is invalid due to out of bounds citizenship digit");
+            return array(TRUE, "ID No. is invalid due to out of bounds citizenship digit");
         //Luhn algorithm Check
         if (luhnAlgorithmCheck($idNumber))
-            return array(true, "ID No. is invalid due to Luhn Algorithm Check");
+            return array(TRUE, "ID No. is invalid due to Luhn Algorithm Check");
         if (duplicateIDCheck($idNumber))
-            return array(true, "Duplicate ID No. found in Database");
-        return array(false, "");
+            return array(TRUE, "Duplicate ID No. found in Database");
+        return array(FALSE||$isError, "");
     }
     function dateOfBirthErrValidate($dateOfBirth, $idNumber)
     {
+        global $isError;
         //split date of birth into year month day array
         $dateOfBirthArray = explode('-', $dateOfBirth);
         //split ID number into array of 2 digits each
         $idArray = str_split($idNumber, 2);
         //if id does not match DOB return true
         if (substr($dateOfBirthArray[0], 2) != $idArray[0] || $dateOfBirthArray[1] != $idArray[1] || $dateOfBirthArray[2] != $idArray[2])
-            return array(true, "Date of birth and ID No. does not match.");
+            return array(TRUE, "Date of birth and ID No. does not match.");
         //check passed return false
-        return array(false, "");
+        return array(FALSE||$isError, "");
     }
     function insertData()
     {
@@ -105,11 +110,11 @@
         //if query fails close database connection and return true 
         if ($conn->query($sql) === FALSE) {
             $conn->close();
-            return true;
+            return TRUE;
         }
         //query is successful. close database and return  
         $conn->close();
-        return false;
+        return FALSE;
 
     }
     function luhnAlgorithmCheck($idNumber)
@@ -127,8 +132,8 @@
         }
         //return false if sum is multiple of 10
         if ($luhnSum % 10 !== 0)
-            return true;
-        return false;
+            return TRUE;
+        return FALSE;
     }
     function duplicateIDCheck($idNumber)
     {
@@ -143,18 +148,18 @@
         // check number of entries in database table. if zero close connection and return
         if ($idList->num_rows < 1) {
             $conn->close();
-            return false;
+            return FALSE;
         }
         // check if id number entered in form is in database table. if true close connection return true
         while ($id = $idList->fetch_assoc()) {
             if ($id["IDNumber"] === $idNumber) {
                 $conn->close();
-                return true;
+                return TRUE;
             }
         }
         //no matches were found. close database and return
         $conn->close();
-        return false;
+        return FALSE;
     }
     ?>
 
@@ -191,6 +196,7 @@
         <br><br>
         <input type="submit" name="post" value="POST">
         <input type="submit" name="cancel" value="CANCEL">
+        
     </form>
 </body>
 

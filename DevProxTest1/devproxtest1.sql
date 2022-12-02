@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2022 at 02:18 PM
+-- Generation Time: Dec 02, 2022 at 10:37 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `devproxtest1`
 --
-CREATE DATABASE IF NOT EXISTS `devproxtest1` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `devproxtest1`;
 
 -- --------------------------------------------------------
 
@@ -41,9 +39,9 @@ CREATE TABLE `userdetails` (
 --
 
 INSERT INTO `userdetails` (`IDNumber`, `FirstName`, `Surname`, `DateOfBirth`) VALUES
-(9707025070088, 'sdgsdfg', 'du Ploot', '1997-07-02'),
-(8707025070089, 'SELECT', 'FROM', '1987-07-02'),
-(8707026070088, 'Andre', 'Du Plooy', '1987-07-02');
+(9707025070088, 'Joshua', 'dnknfdk', '1997-07-02'),
+(9707025060089, 'Joshua', 'Du Plooy', '1997-07-02'),
+(9707025050189, 'Joshua', 'Du Plooy', '1997-07-02');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

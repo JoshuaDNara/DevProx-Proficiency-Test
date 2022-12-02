@@ -36,7 +36,7 @@ records imported.
 
 - DevProxTest1 is a directory containing 2 files.
 -- index.php the file that solves Test 1.
--- 127_0_0_1.sql the database file.
+-- devproxtest1.sql the database file.
 - DevProxTest2 is a directory containing 3 files and 2 directories
 - - output is a directory where files output by the test 2 web application
 - - uploads is a directory where files are saved to when uploaded to the web application by the user
@@ -54,5 +54,13 @@ records imported.
 6. Search for *mysqlnd.net_read_buffer_size* and change its value to 526288000
 7. Save the file and exit.
 8. Go back to the Xampp control pannel and start the Apache and MySQL Modules.
-9. Open test 1 at *http://localhost/DevProxProficiencyTest/DevProxTest1/index.php*
-10. Open Test 2 at *http://localhost/DevProxProficiencyTest/DevProxTest2/index.php*
+9. Click on the Mysql admin button, your browser should open and the phpmyadmin window should show up. 
+10. Navigate to *New* in the tree structure on the left and copy the following into the field that says "Database name": *devproxtest1*
+11. click create button
+12. The devproxtest1 database should apear in the tree structure on the left part of the window. Navigate to it then click the *import tab* at the top middle of your window.
+13. Click choose file and choose the *devproxtest1.sql* inside the DevProxTest1 folder inside the repository.
+14. Click import button at the bottom of the window.
+15. You are now free to use the test 1 and test 2 applications.
+16. Open test 1 at *http://localhost/DevProxProficiencyTest/DevProxTest1/index.php*
+17. Open Test 2 at *http://localhost/DevProxProficiencyTest/DevProxTest2/index.php*
+18. Note: if you already uploaded a file in test 2 and wish to upload a second, please drop the csv_import table from the devprox1 database, as it was a requirement to name the table *csv_import* and could not dynamically generate new tables for additional uploads.
