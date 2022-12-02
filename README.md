@@ -38,11 +38,12 @@ records imported.
   - index.php the file that solves Test 1.
   - devproxtest1.sql the database file.
 - DevProxTest2 is a directory containing 3 files and 2 directories
-- - output is a directory where files output by the test 2 web application
-- - uploads is a directory where files are saved to when uploaded to the web application by the user
-- - devProxTest2.php is the page that is called to generate a new file
-- - index.php is the main page of the test 2 application contianing forms for both funcitons required and calls other pages when needed
-- - upload.php is the page that handles file uploads to make sure that the file uploaded by the user is valid.
+  - output is a directory where files output by the test 2 web application
+  - uploads is a directory where files are saved to when uploaded to the web application by the user
+  - devProxTest2.php is the page that is called to generate a new file
+  - index.php is the main page of the test 2 application contianing forms for both funcitons required and calls other pages when needed
+  - upload.php is the page that handles file uploads to make sure that the file uploaded by the user is valid.
+- README.md the file you are currently reading.
 
 # Installation instructions
 
